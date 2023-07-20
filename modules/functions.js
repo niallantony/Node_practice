@@ -86,7 +86,17 @@ function iterativeFib(n) {
 function recursiveFib(n) {
     if ( n <= 2 ) return n === 0 ? [] : n === 1 ? [1] : [1,1];
     return recursiveFib(n-1).concat(recursiveFib(n-1)[n-2] + recursiveFib(n-1)[n-3]);
-}      
+}   
+
+exports.removeDuplicates = (array) => {
+    const newArray = [];
+    for ( let i = 0 ; i < array.length ; i++ ) {
+        if (!newArray.includes(array[i])) {
+            newArray.push(array[i]);
+        } 
+    }
+    return newArray
+}
 
 
 
