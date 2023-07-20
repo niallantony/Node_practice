@@ -1,0 +1,14 @@
+{
+  "name": "node-practice",
+  "version": "1.0.0",
+  "description": "A collection of functions and algorithms made while practicing node.js",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niall Antony",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.45.0"
+  }
+}
