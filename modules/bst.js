@@ -1,5 +1,5 @@
 const mergeSort = require('./sorts');
-const functions = require('./functions');
+
 
 
 const Node = (data = null) => {
@@ -29,8 +29,12 @@ exports.binarySearchTree = (array) => {
     }
 
     const arrayToBST = (array) => {
-        if (!isSorted(array)) array = mergeSort.mergeSort(array);
-        array = functions.removeDuplicates(array);
+        try {
+            if (!isSorted(array)) array = mergeSort.mergeSort(array);
+        } catch {
+            throw new Error("No sorting available")
+        }
+        array = removeDuplicates(array);
         return constructSubTrees(array); 
     }
 
@@ -131,7 +135,7 @@ exports.binarySearchTree = (array) => {
         return array;  
     }
 
-    const levelOrderRecursive = (cb) => {
+    const levelOrder = (cb) => {
         const queue = [];
         const array = [];
         const handle = () => {
@@ -239,6 +243,16 @@ exports.binarySearchTree = (array) => {
         root = constructSubTrees(sortedArray);
     }
 
+    const removeDuplicates = (array) => {
+        const newArray = [];
+        for ( let i = 0 ; i < array.length ; i++ ) {
+            if (!newArray.includes(array[i])) {
+                newArray.push(array[i]);
+            } 
+        }
+        return newArray
+    }
+
     
     const printTree = () => {
         prettyPrint(root);
@@ -251,8 +265,7 @@ exports.binarySearchTree = (array) => {
         insert,
         deleteNode,
         find,
-        levelOrderIterative,
-        levelOrderRecursive,
+        levelOrder,
         inOrder,
         preOrder,
         postOrder,
