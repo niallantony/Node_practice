@@ -31,7 +31,6 @@ exports.binarySearchTree = (array) => {
     const arrayToBST = (array) => {
         if (!isSorted(array)) array = mergeSort.mergeSort(array);
         array = functions.removeDuplicates(array);
-        console.log(array);
         return constructSubTrees(array); 
     }
 
@@ -107,7 +106,7 @@ exports.binarySearchTree = (array) => {
             succ = succParent.left;
         }
         // If the successor is the first element, then take its right child (if any) as the new right child of the parent, if not then take its right child and put it as the left child of its parent, because we know that its the left child if its not the child of our node to be deleted (Phew!)
-        if (succParent != node) {
+        if (succParent !== node) {
             succParent.left = succ.right;
         } else {
             succParent.right = succ.right;
@@ -118,18 +117,149 @@ exports.binarySearchTree = (array) => {
         return node;
     }
 
+    const levelOrderIterative = (cb) => {
+        const queue = [];
+        const array = [];
+        queue.push(root);
+        while (queue.length) {
+            const current = queue[0];
+            if (current.left) queue.push(current.left);
+            if (current.right) queue.push(current.right);
+            if (cb) current.data = cb(current.data);
+            array.push(queue.shift().data)
+        }
+        return array;  
+    }
+
+    const levelOrderRecursive = (cb) => {
+        const queue = [];
+        const array = [];
+        const handle = () => {
+            const element = queue[0];
+            if (element.left) queue.push(element.left);
+            if (element.right) queue.push(element.right);
+            if (cb) element.data = cb(element.data);
+            array.push(queue.shift().data);
+            if (queue.length) handle(queue[0]);
+        }
+        queue.push(root);
+        handle();
+        return array;
+    }
+
+    const inOrder = (cb) => {
+        const array = [];
+        const handle = (current) => {
+            if (current.left) {
+                handle(current.left);
+            }
+            if (cb) current.data = cb(current.data);
+            array.push(current.data);
+            if (current.right) {
+                handle(current.right);
+            };
+        }
+        handle(root);
+        return array;
+    }
+    const preOrder = (cb) => {
+        const array = [];
+        const handle = (current) => {
+            if (cb) current.data = cb(current.data);
+            array.push(current.data);
+            if (current.left) {
+                handle(current.left);
+            }
+            if (current.right) {
+                handle(current.right);
+            };
+        }
+        handle(root);
+        return array;
+    }
+    const postOrder = (cb) => {
+        const array = [];
+        const handle = (current) => {
+            if (current.left) {
+                handle(current.left);
+            }
+            if (current.right) {
+                handle(current.right);
+            };
+            if (cb) current.data = cb(current.data);
+            array.push(current.data);
+        }
+        handle(root);
+        return array;
+    }
+
+    const height = (node, h = 0) => {
+        if (!node) {
+            console.warn("Not a node");
+            return;
+        }
+        let h1 = h;
+        if (node.left) {
+            h1 = height(node.left, h+1);
+        }
+        if (node.right) {
+            h1 = height(node.right, h+1) > h1 ? height(node.right, h+1) : h1 ;
+        }
+        return h1;
+    }
+
+    const depth = (node, nextNode = root, d = 0) => {
+        if (!node) {
+            console.warn("Not a node");
+            return; 
+        }
+        if (nextNode === node) return d;
+        if (node.data < nextNode.data && nextNode.left) {
+            return depth(node, nextNode.left, d+1);
+        } else if (nextNode.right) return depth(node, nextNode.right, d+1);
+    }
+
+    const isBalanced = (node = root) => {
+        // If node doesn't exist or doesn't have any children return BALANCED
+        if (!node || (!node.left && !node.right)) return true;
+
+        // Get the heights of each subtree by measuring the height of children plus 1 (or 0 if no children)
+        const leftHeight = node.left ? height(node.left) +1 : 0 ;
+        const rightHeight = node.right ? height(node.right) +1 : 0 ;
+
+        // Get the difference and return UNBALANCED if greater than 1
+        if (Math.abs(leftHeight - rightHeight) > 1) return false;
+
+        // Call recursively passing any UNBALANCED values up the chain with an AND operator
+        return (isBalanced(node.left) && isBalanced(node.right))
+    }
+
+    const rebalance = () => {
+        const sortedArray = inOrder();
+        root = constructSubTrees(sortedArray);
+    }
+
     
     const printTree = () => {
         prettyPrint(root);
         console.log(`   ----   `)
     }
 
-    const root = arrayToBST(array);
+    let root = arrayToBST(array);
     return {
         printTree,
         insert,
         deleteNode,
         find,
+        levelOrderIterative,
+        levelOrderRecursive,
+        inOrder,
+        preOrder,
+        postOrder,
+        height,
+        depth,
+        isBalanced,
+        rebalance
     }
 
 }

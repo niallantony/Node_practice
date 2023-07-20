@@ -7,13 +7,26 @@ const functions = require('./modules/functions');
 
 
 // Demonstration of a Balanced Binary Search Tree
-const BST = bst.binarySearchTree([1,24,5,3,34,3,1,33,35,26]);
+const BST = bst.binarySearchTree([1,24,5,3,34,3,1,7,34,7,3,1,312,34,23,67,3,46,84,137,95,33,35,26]);
 BST.printTree();
 BST.deleteNode(5);
 BST.printTree();
 BST.deleteNode(26);
 BST.printTree();
-
+console.log(BST.find(35));
+// console.log(BST.levelOrderIterative());
+// console.log(BST.levelOrderRecursive());
+// console.log(BST.levelOrderRecursive((data) => data*2));
+// BST.printTree();
+// console.log(BST.inOrder());
+// console.log(BST.preOrder());
+// console.log(BST.postOrder());
+// const twentyThree = BST.find(46);
+// console.log(BST.height(twentyThree));
+// console.log(BST.depth(twentyThree));
+console.log(BST.isBalanced())
+BST.rebalance();
+BST.printTree();
 
 
 // // Demonstration of a merge sort
