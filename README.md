@@ -4,6 +4,9 @@ Everything was created for my own practice, these are by no means fully optimise
 
 ## 🔗 Linked List
 
+Make sure to include the follow code to import:
+`const LinkedList = require('./linkedlist')`
+
 Create a single linked list. Methods:
 - `append(value)` - Add a node to the end of the list
 - `prepend(value)` - Add a node to the start of the list
@@ -19,6 +22,9 @@ Create a single linked list. Methods:
 - `removeAt(index)` - Removes the node at `index`
 
 ## 🔁 Sorts
+
+Make sure to include the follow code to import:
+`const sorts = require('./sorts')`
 
 Contains algorithms for sorting. Methods:
 - `mergeSort(array)` - Uses Merge Sort to sort an array
