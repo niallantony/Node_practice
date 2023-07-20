@@ -1,5 +1,11 @@
 const LinkedList = require('./linkedlist')
+const sorts = require('./sorts')
 
+
+const unsorted = [2,6,42,46,8,3,1,5,4];
+const sorted = sorts.mergeSort(unsorted);
+console.log("Sorted: ", sorted)
+console.log("Unsorted: ", unsorted)
 const shoppingList = LinkedList.LinkedList();
 shoppingList.append('Meat');
 shoppingList.append('Bread');

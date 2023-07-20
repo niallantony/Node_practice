@@ -1,0 +1,24 @@
+.container {
+    display: grid;
+    /* grid-template-columns: 50px 50px;
+    grid-template-rows: 50px 50px 50px; */
+    /* grid-template: 100px 100px 100px / 200px 200px; */
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));  /*  This would create a grid with 6 columns, 
+                                                                    spacing them out equally as it auto-fits
+                                                                    the content, choosing the correct size.
+                                                                    with a minimum width of 3rem */
+
+    grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));  /* This would create as many columns as it */
+                                                                               /* can to fill the page, having a preference for
+                                                                                the 10rem size in the min function.
+                                                                                the min() function here means that it can get
+                                                                                smaller than 10rem if the container shrinks that
+                                                                                way.  */
+    grid-auto-rows: 50px;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+
+.container > div {
+    border: 1px dotted orange;
+}
