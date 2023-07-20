@@ -98,5 +98,13 @@ exports.removeDuplicates = (array) => {
     return newArray
 }
 
+exports.randomNumberArray = (elements,max) => {
+    const array = [];
+    for (let i = 0 ; i < elements ; i++) {
+        array.push(Math.floor(Math.random() * max));
+    }
+    return array;
+}
+
 
 

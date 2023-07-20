@@ -4,16 +4,35 @@ const bst = require('./modules/bst');
 const functions = require('./modules/functions');
 
 
-
+// Simple driver script for Binary Search Tree
+const randomArray = functions.randomNumberArray(30,100);
+const binaryTree = bst.binarySearchTree(randomArray);
+binaryTree.printTree();
+console.log("Is balanced: ",binaryTree.isBalanced());
+console.log(binaryTree.levelOrderRecursive());
+console.log(binaryTree.inOrder());
+console.log(binaryTree.preOrder());
+console.log(binaryTree.postOrder());
+const unbalancingElements = functions.randomNumberArray(10,100);
+unbalancingElements.forEach((element) => binaryTree.insert(element));
+binaryTree.printTree();
+console.log("Is balanced: ",binaryTree.isBalanced());
+binaryTree.rebalance();
+binaryTree.printTree();
+console.log("Is balanced: ",binaryTree.isBalanced());
+console.log(binaryTree.levelOrderRecursive());
+console.log(binaryTree.inOrder());
+console.log(binaryTree.preOrder());
+console.log(binaryTree.postOrder());
 
 // Demonstration of a Balanced Binary Search Tree
-const BST = bst.binarySearchTree([1,24,5,3,34,3,1,7,34,7,3,1,312,34,23,67,3,46,84,137,95,33,35,26]);
-BST.printTree();
-BST.deleteNode(5);
-BST.printTree();
-BST.deleteNode(26);
-BST.printTree();
-console.log(BST.find(35));
+// const BST = bst.binarySearchTree([1,24,5,3,34,3,1,7,34,7,3,1,312,34,23,67,3,46,84,137,95,33,35,26]);
+// BST.printTree();
+// BST.deleteNode(5);
+// BST.printTree();
+// BST.deleteNode(26);
+// BST.printTree();
+// console.log(BST.find(35));
 // console.log(BST.levelOrderIterative());
 // console.log(BST.levelOrderRecursive());
 // console.log(BST.levelOrderRecursive((data) => data*2));
@@ -24,9 +43,9 @@ console.log(BST.find(35));
 // const twentyThree = BST.find(46);
 // console.log(BST.height(twentyThree));
 // console.log(BST.depth(twentyThree));
-console.log(BST.isBalanced())
-BST.rebalance();
-BST.printTree();
+// console.log(BST.isBalanced())
+// BST.rebalance();
+// BST.printTree();
 
 
 // // Demonstration of a merge sort
