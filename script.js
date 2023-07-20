@@ -1,5 +1,5 @@
-const LinkedList = require('./linkedlist')
-const sorts = require('./sorts')
+const LinkedList = require('./modules/linkedlist')
+const sorts = require('./modules/sorts')
 
 // Demonstration of a merge sort
 const unsorted = [2,6,42,46,8,3,1,5,4];
