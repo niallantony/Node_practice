@@ -56,7 +56,8 @@ Make sure to include the following code to import:
 
 Use function `.knightsTravails(location, destination)` where `location` and `destination` are given as chess notation in `string` format. For example:
 `knightsTravails.knightsTravails("G1","A1");` would print:
-```┌─────────┬────────┐
+``` js
+┌─────────┬────────┐
 │ (index) │ Values │
 ├─────────┼────────┤
 │    0    │  'G1'  │
@@ -65,6 +66,7 @@ Use function `.knightsTravails(location, destination)` where `location` and `des
 │    3    │  'C2'  │
 │    4    │  'A1'  │
 └─────────┴────────┘
-♘ Reached destination in  5  moves. ♘```
+♘ Reached destination in  5  moves. ♘
+```
 
 
