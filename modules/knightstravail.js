@@ -33,6 +33,7 @@ exports.knightsTravails = (coordinates,destination) => {
 
     const changeFromNotation = (notation) => {
         const array = notation.split('');
+        if (!DIGITS.includes(array[0])) throw new Error("Incorrect Notation inputted");
         array[0] = DIGITS.indexOf(array[0].toLowerCase());
         array[1] = Number(array[1]) - 1;
         return array
@@ -60,6 +61,10 @@ exports.knightsTravails = (coordinates,destination) => {
         while (queue.length) {
             buildBranches(queue.shift());
         }
+    }
+
+    const checkCoords = (array) => {
+        if (array[0] > 7 || array[0] < 0 || array[1] > 7 || array[1] < 0) throw new Error("Incorrect notation inputted");
     }
 
     const buildBranches = (current) => {
@@ -121,6 +126,8 @@ exports.knightsTravails = (coordinates,destination) => {
 
     const coorArray = changeFromNotation(coordinates);
     const destArray = changeFromNotation(destination);
+    checkCoords(coorArray);
+    checkCoords(destArray);
     let root = Square(coorArray[0],coorArray[1]);
     buildTree(coorArray);
     showMoves(destArray);

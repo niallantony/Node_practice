@@ -4,7 +4,7 @@ const bst = require('./modules/bst');
 const functions = require('./modules/functions');
 const knightsTravails = require('./modules/knightstravail');
 
-knightsTravails.knightsTravails("h8","a1");
+knightsTravails.knightsTravails("g1","a1");
 
 
 
