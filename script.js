@@ -2,28 +2,32 @@ const LinkedList = require('./modules/linkedlist');
 const sorts = require('./modules/sorts');
 const bst = require('./modules/bst');
 const functions = require('./modules/functions');
+const knightsTravails = require('./modules/knightstravail');
+
+knightsTravails.knightsTravails("h8","a1");
+
 
 
 // Simple driver script for Binary Search Tree
-const randomArray = functions.randomNumberArray(30,100);
-const binaryTree = bst.binarySearchTree(randomArray);
-binaryTree.printTree();
-console.log("Is balanced: ",binaryTree.isBalanced());
-console.log(binaryTree.levelOrderRecursive());
-console.log(binaryTree.inOrder());
-console.log(binaryTree.preOrder());
-console.log(binaryTree.postOrder());
-const unbalancingElements = functions.randomNumberArray(10,100);
-unbalancingElements.forEach((element) => binaryTree.insert(element));
-binaryTree.printTree();
-console.log("Is balanced: ",binaryTree.isBalanced());
-binaryTree.rebalance();
-binaryTree.printTree();
-console.log("Is balanced: ",binaryTree.isBalanced());
-console.log(binaryTree.levelOrderRecursive());
-console.log(binaryTree.inOrder());
-console.log(binaryTree.preOrder());
-console.log(binaryTree.postOrder());
+// const randomArray = functions.randomNumberArray(30,100);
+// const binaryTree = bst.binarySearchTree(randomArray);
+// binaryTree.printTree();
+// console.log("Is balanced: ",binaryTree.isBalanced());
+// console.log(binaryTree.levelOrderRecursive());
+// console.log(binaryTree.inOrder());
+// console.log(binaryTree.preOrder());
+// console.log(binaryTree.postOrder());
+// const unbalancingElements = functions.randomNumberArray(10,100);
+// unbalancingElements.forEach((element) => binaryTree.insert(element));
+// binaryTree.printTree();
+// console.log("Is balanced: ",binaryTree.isBalanced());
+// binaryTree.rebalance();
+// binaryTree.printTree();
+// console.log("Is balanced: ",binaryTree.isBalanced());
+// console.log(binaryTree.levelOrderRecursive());
+// console.log(binaryTree.inOrder());
+// console.log(binaryTree.preOrder());
+// console.log(binaryTree.postOrder());
 
 // Demonstration of a Balanced Binary Search Tree
 // const BST = bst.binarySearchTree([1,24,5,3,34,3,1,7,34,7,3,1,312,34,23,67,3,46,84,137,95,33,35,26]);
